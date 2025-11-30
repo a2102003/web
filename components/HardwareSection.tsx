@@ -78,8 +78,8 @@ const HardwareSection: React.FC = () => {
       {/* Container widened to max-w-[95%] for a broader look */}
       <div className="max-w-[95%] mx-auto relative z-10">
         
-        {/* Main Card with Fixed Height on Desktop to prevent shrinking */}
-        <div className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 h-auto lg:h-[800px]">
+        {/* Main Card with Min-Height to prevent shrinking AND clipping */}
+        <div className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 min-h-[900px]">
           
           {/* Aegean Sea Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
@@ -94,7 +94,7 @@ const HardwareSection: React.FC = () => {
           {/* Subtle Light Gradient */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-gray-200/50 pointer-events-none z-0 opacity-50" />
 
-          <div className="relative z-10 p-8 md:p-12 flex flex-col h-full">
+          <div className="relative z-10 p-8 md:p-12 flex flex-col h-full flex-grow">
             
             {/* Header Area */}
             <div className="flex flex-col lg:flex-row justify-between items-end mb-10 pb-6 border-b border-gray-200/50">
@@ -144,7 +144,7 @@ const HardwareSection: React.FC = () => {
             </div>
 
             {/* Content Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               {filteredList.map((item, index) => {
                 return (
                   <div
@@ -180,7 +180,7 @@ const HardwareSection: React.FC = () => {
             </div>
 
              {/* Footer Decoration - MOVED INSIDE AND TO BOTTOM */}
-             <div className="mt-auto flex flex-col items-center justify-center text-gray-400 text-xs font-mono">
+             <div className="mt-auto flex flex-col items-center justify-center text-gray-400 text-xs font-mono pt-4">
                 <div className="flex items-center gap-4 mb-2">
                   <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-gray-300"></div>
                   <div className="flex gap-1.5">
