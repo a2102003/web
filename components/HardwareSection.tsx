@@ -1,10 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { HardwareItem } from '../types';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const HardwareSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState('All');
   const { t } = useLanguage();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [wrapperHeight, setWrapperHeight] = useState<number | undefined>(undefined);
+
+  // Lock the height to the "All" tab's height to prevent shrinking/jumping
+  useEffect(() => {
+    const updateHeight = () => {
+      if (activeTab === 'All' && containerRef.current) {
+        setWrapperHeight(containerRef.current.offsetHeight);
+      }
+    };
+
+    // Measure initially and on resize
+    updateHeight();
+    
+    const observer = new ResizeObserver(updateHeight);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [activeTab]);
 
   const hardwareList: HardwareItem[] = [
     { 
@@ -78,8 +99,12 @@ const HardwareSection: React.FC = () => {
       {/* Container widened to max-w-[95%] for a broader look */}
       <div className="max-w-[95%] mx-auto relative z-10">
         
-        {/* Main Card with Min-Height to prevent shrinking AND clipping */}
-        <div className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 min-h-[900px]">
+        {/* Main Card with Dynamic Min-Height to prevent shrinking */}
+        <div 
+          ref={containerRef}
+          style={{ minHeight: activeTab === 'All' ? undefined : wrapperHeight }}
+          className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 min-h-[900px]"
+        >
           
           {/* Aegean Sea Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
