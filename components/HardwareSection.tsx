@@ -78,8 +78,8 @@ const HardwareSection: React.FC = () => {
       {/* Container widened to max-w-[95%] for a broader look */}
       <div className="max-w-[95%] mx-auto relative z-10">
         
-        {/* Light Gray Theme Container with Background Image */}
-        <div className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 min-h-[900px] transition-all duration-300">
+        {/* Main Card with Fixed Height on Desktop to prevent shrinking */}
+        <div className="relative bg-gray-100 rounded-[32px] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden flex flex-col border border-gray-200 h-auto lg:h-[800px]">
           
           {/* Aegean Sea Background Image with Overlay */}
           <div className="absolute inset-0 z-0">
@@ -143,7 +143,7 @@ const HardwareSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Content Grid - Widened cards using aspect-video */}
+            {/* Content Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
               {filteredList.map((item, index) => {
                 return (
@@ -179,18 +179,18 @@ const HardwareSection: React.FC = () => {
               })}
             </div>
 
-            {/* Footer Decoration - Centered & Light Theme */}
-            <div className="mt-auto pt-6 flex flex-col items-center justify-center text-gray-500 text-xs font-mono">
-               <div className="flex items-center gap-4 mb-2">
-                 <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-gray-400"></div>
-                 <div className="flex gap-1.5">
-                    <span className="w-1 h-1 bg-gray-500 rounded-full animate-pulse"></span>
-                    <span className="w-1 h-1 bg-gray-500 rounded-full animate-pulse delay-75"></span>
-                    <span className="w-1 h-1 bg-gray-500 rounded-full animate-pulse delay-150"></span>
-                 </div>
-                 <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-gray-400"></div>
-               </div>
-               <div className="tracking-[0.2em] text-gray-600 font-semibold shadow-white drop-shadow-sm">DEVICE_ID: GREECE_V2.0</div>
+             {/* Footer Decoration - MOVED INSIDE AND TO BOTTOM */}
+             <div className="mt-auto flex flex-col items-center justify-center text-gray-400 text-xs font-mono">
+                <div className="flex items-center gap-4 mb-2">
+                  <div className="w-16 h-[1px] bg-gradient-to-r from-transparent to-gray-300"></div>
+                  <div className="flex gap-1.5">
+                    <span className="w-1 h-1 bg-gray-400 rounded-full animate-pulse"></span>
+                    <span className="w-1 h-1 bg-gray-400 rounded-full animate-pulse delay-75"></span>
+                    <span className="w-1 h-1 bg-gray-400 rounded-full animate-pulse delay-150"></span>
+                  </div>
+                  <div className="w-16 h-[1px] bg-gradient-to-l from-transparent to-gray-300"></div>
+                </div>
+                <div className="tracking-[0.2em] text-gray-500 font-semibold">DEVICE_ID: GREECE_V2.0</div>
             </div>
 
           </div>
